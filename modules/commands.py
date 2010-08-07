@@ -15,6 +15,10 @@ class Module:
     if text[0] != '.':
       return
 
+    if text.split(' ')[0] != ".die" and text.split(' ')[0] != ".rehash":
+      return
+
+
     if not src in config['admins']:
       self.irc.send('PRIVMSG {dst} :{src}: Spierdalaj.'.format(dst=dst,src=src))
       return

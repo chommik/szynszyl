@@ -5,16 +5,16 @@ import sys
 config = {}
 
 config['name'] = 'ircbot'
-config['server'] = '::ffff:192.168.2.54'
+config['server'] = '::1'
 config['port'] = 6667
 
-config['nick'] = 'py-szynszyl'
+config['nick'] = 'szynszyl'
 config['username'] = 'bot'
 config['realname'] = 'Bot'
 
 config ['loadmodules'] = ['channels', 'link', 'commands', 'ctcp', 'dnsclient']
 
-config['background'] = 0
+config['background'] = 1
 
 config['log'] = sys.stderr
 #inna możliwość:
@@ -22,8 +22,8 @@ config['log'] = sys.stderr
 config['logformat'] = '{date} {prefix} {text}'
 config['dateformat'] = "%Y-%m-%d %H:%M:%S"
 
-config['debugmode'] = 1
+config['debugmode'] = 0
 
-config['joinchannels'] = ['#bot']
+config['joinchannels'] = ['#bot','#pz','#main']
 
 config['admins'] = [ 'chommik!rafal@staff.netadmin' ]

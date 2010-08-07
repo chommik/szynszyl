@@ -4,6 +4,7 @@
 from bot import Bot
 from config import config
 from log import log
+import os
 
 def daemonize():
   try:
