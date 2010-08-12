@@ -5,6 +5,7 @@ from bot import Bot
 from config import config
 from log import log
 import os
+import sys
 
 def daemonize():
   try:
@@ -26,7 +27,7 @@ def daemonize():
       sys.exit(1)
 
 if __name__ == "__main__":
-  if config['background']:
+  if config['bot']['background']:
     daemonize()
   log('szynszyl starting...')
   bot = Bot()

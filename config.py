@@ -1,29 +1,38 @@
 # -*- encoding: utf-8 -*-
 
-import sys
+import yaml
 
-config = {}
+class Config:
+  def __getitem__(self, item):
+    """Gets config item"""
+    if item in self.config:
+      return self.config[item]
+    else:
+      raise KeyError
 
-config['name'] = 'ircbot'
-config['server'] = '::1'
-config['port'] = 6667
+  def __setitem__(self, item, val):
+    """Sets config item"""
+    self.config[item] = c
 
-config['nick'] = 'szynszyl'
-config['username'] = 'bot'
-config['realname'] = 'Bot'
+  def __init__(self):
+    """Inits config object"""
+    self.load_config()
 
-config ['loadmodules'] = ['channels', 'link', 'commands', 'ctcp', 'dnsclient']
 
-config['background'] = 1
+  def reload(self):
+    """Reloads config ignoreing current values"""
+    load_config(self)
 
-config['log'] = sys.stderr
-#inna możliwość:
-#config['log'] = open('szynszyl.log','w')
-config['logformat'] = '{date} {prefix} {text}'
-config['dateformat'] = "%Y-%m-%d %H:%M:%S"
 
-config['debugmode'] = 0
+  def load_config(self):
+    f = open('config.yml','r')
+    self.config = yaml.load(f)
+    f.close()
 
-config['joinchannels'] = ['#bot','#pz','#main']
+  def save(self):
+    """Saves config to file"""
+    f = open('config.yml','w+')
+    f.write = yaml.dump(self.config, explicit_start=True, default_flow_style=False)
+    f.close()
 
-config['admins'] = [ 'chommik!rafal@staff.netadmin' ]
+config = Config()

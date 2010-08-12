@@ -3,6 +3,8 @@
 from config import config
 from time import strftime
 
+flog = open(config['bot']['log']['file'], 'w')
+
 def log(text, type='INFO'):
   """Logs data"""
   if type ==  'INFO':
@@ -12,10 +14,12 @@ def log(text, type='INFO'):
   elif type == 'CRIT':
     prefix = '##'
   elif type == 'DEBUG':
-    if not config['debugmode']:
+    if config['bot']['debugmode'] == 0:
       return
     prefix = '--'
+  else:
+      prefix = 'FIXME_WRONG_CODE'
 
-  date = strftime(config['dateformat'])
-  config['log'].write(config['logformat'].format(prefix=prefix, date=date, text=text) + "\n")
-  config['log'].flush()
+  date = strftime(config['bot']['log']['dateformat'])
+  flog.write(config['bot']['log']['logformat'].format(prefix=prefix, date=date, text=text) + "\n")
+  flog.flush()

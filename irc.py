@@ -16,7 +16,7 @@ class Irc:
       self.sock.connect((self.server, self.port))
       self.fsock = self.sock.makefile()
     except IOError as e:
-      log('Cannot open socket, error:' + str(e),'CRIT')
+      log('Cannot open socket, error: ' + str(e), 'ERROR')
     else:
       self.opened = 1
     return 0
