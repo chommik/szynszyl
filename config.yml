@@ -1,0 +1,35 @@
+irc:
+  server: '2001:470:1f0b:9ee::6'
+  port: 6667
+  nick: 'szynszyl_'
+  username: 'ircbot'
+  realname: 'Bot'
+  reconnect:
+    allow: 1
+    timeout: 10
+    maxtries: 3
+
+modules:
+  _autoload:
+    - 'dummy'
+    - 'channels'
+    - 'link'
+    - 'commands'
+    - 'ctcp'
+    - 'dnsclient'
+  channels:
+    autojoin:
+      - '#bot'
+      - '#pz'
+      - '#main'
+
+bot:
+  background: 0
+  debugmode: 1
+  log:
+    logformat: '{date} [{prefix}] {text}'
+    dateformat: '%Y-%m-%d %H:%M:%S'
+    file: '/dev/stdout'
+
+admins:
+  - 'chommik!rafal@staff.netadmin'
